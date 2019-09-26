@@ -129,6 +129,7 @@ Keybindings:
 **/**                        Search
 **n**                        Next search result
 **p**                        Previous search result
+**f**                        Filter the table for the selected column value
 **t**                        Toggle fixed header row
 **< >**                      Decrease/Increase column width (all columns)
 **, .**                      Decrease/Increase column width (current column)

@@ -325,6 +325,14 @@ class Viewer:
         end = len(self.data[self.y + self.win_y])
         self.goto_x(end)
 
+    def filter_on_column(self):
+        "Filter the table on the selected value in this column"
+        yp = self.y + self.win_y
+        xp = self.x + self.win_x
+        sp = self.data[yp][xp]
+        data = [r for r in self.data if r[xp]==sp]
+        self.data = data
+
     def show_cell(self):
         "Display current cell in a pop-up window"
         yp = self.y + self.win_y
@@ -687,6 +695,7 @@ class Viewer:
                      '/': self.search,
                      'n': self.search_results,
                      'p': self.search_results_prev,
+                     'f': self.filter_on_column,
                      't': self.toggle_header,
                      '-': self.column_gap_down,
                      '+': self.column_gap_up,
@@ -872,9 +881,11 @@ class Viewer:
         # Print the table data
         for y in range(0, self.max_y - self.header_offset -
                        self._search_win_open):
+
             yc = y + self.header_offset
             self.scr.move(yc, 0)
             self.scr.clrtoeol()
+
             for x in range(0, self.vis_columns):
                 if x == self.x and y == self.y:
                     attr = curses.A_REVERSE

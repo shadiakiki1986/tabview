@@ -1,3 +1,7 @@
+*Version 1.4.4 2019/09/26*
+
+  - Added command 'f' to filter table on column value
+
 *Version 1.4.3 2017/11/13*
 
   - Added an additional parse step for space-delimited files:
